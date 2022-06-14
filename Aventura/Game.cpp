@@ -21,7 +21,7 @@ void Game::creaElementos(){
     personaje=new Character("Morbius");
     cuarto1=new Room("Primer habitacion!", false,0);
     cuarto2=new Room("Este cuarto esta oscuro! Nunca encontraremos la llave!", true, 1);
-    cuarto3=new Room("Parece ser el tercer cuarto!", true, 2);
+    cuarto3=new Room("Tercer cuarto! No encuentro la llave pero la cerradura se parece a la del primer cuarto!", true, 2);
     cuarto4=new Room("Sera el ultimo cuarto?", true, 1);
     cajon=new ItemEstatico("cajon", "Encontraste algo dentro!", true, false);
     alfombra=new ItemEstatico("alfombra", "Encontraste algo debajo!", true, false);
@@ -33,8 +33,8 @@ void Game::creaElementos(){
     lampNormal = new ItemEstatico("Lampara", "Haz encontrado una nueva Llave!",true,false);
     switchLuz = new ItemEstatico("switchluz", "Puede haber algo dentro", true, true);
     ventana = new ItemEstatico("ventana", "Mira! un carro, es nuestra oportunidad de escapar. Me pregunto donde estaran las llaves", true, false);
-    llave1 = new ItemRecogible("Llave", "La primera llave!", 1, false);
-    llave2 = new ItemRecogible("Llave", "Otra llave!", 2, false);
+    llave1 = new ItemRecogible("Llave1", "La primera llave!", 1, false);
+    llave2 = new ItemRecogible("Llave2", "Otra llave!", 2, false);
     carroLlave = new ItemRecogible("Llave carro", "Por fin! Salgamos de aqui", 0, false);
     personaje->setPosicion(cuarto1);
     cuarto1->agregaItemE(cajon);    

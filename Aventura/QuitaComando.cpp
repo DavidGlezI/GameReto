@@ -14,6 +14,7 @@ void QuitaComando::ejecuta(){
         int num=jugador->buscaItemR(cosa); //veo si está en el inventario (posicion dentro del vector)
         ItemRecogible* deJugador=jugador->getItemR(num);
         if (num!=-1){
+            //std::cout<<"Recuerda: si quieres quitar una llave, sacaras la que hayas recogido primero!"<<std::endl;
             actual->agregaItemR(deJugador);
             jugador->sacaItemR(num);
             std::cout<<"----------------"<<std::endl;
@@ -30,3 +31,4 @@ void QuitaComando::ejecuta(){
         }
     }
 }
+

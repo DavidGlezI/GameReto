@@ -15,3 +15,8 @@ int main(){
 // checar lo de las condiciones del final
 // Quitar objetos si ya hemos interactuado con ellos 
 
+// Agregar diferenciadores entre acciones -----
+
+// agregar que hacer con cada objeto, usar, tomar etc..
+
+// quitar llave con id

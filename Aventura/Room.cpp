@@ -82,6 +82,14 @@ int Room::buscaItemR(std::string que){  // Recorre el arreglo de cosas para busc
     }
     return -1; //regresa -1 si no encontró ese item
 }
+int Room::buscaItemRconID(std::string que, int id){
+    for(int i=0; i<cosas.size(); i++){
+        if (cosas[i]->getDescripcion()==que && cosas[i]->getCuartoFunc()==id){
+            return i;
+        }
+    }
+    return -1;
+}
 
 int Room::buscaItemE(std::string que){  // Recorre el arreglo de decoracion para buscar un objeto /string/. Si existe regresa el index del arreglo, si no un -1
     for(int i=0; i<decoracion.size();i++){

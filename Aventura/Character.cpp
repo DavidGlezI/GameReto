@@ -46,12 +46,22 @@ void Character::sacaItemR(ItemRecogible* item){
     }
 }
 */
-void Character::agregaItemR(ItemRecogible* cosita){ // Agrega un item al final del arreglo 
-    obejtosPersona.push_back(cosita);
+void Character::agregaItemR(ItemRecogible* cosita){ // Agrega un item al final del arreglo
+    if(obejtosPersona.size()<2){
+        obejtosPersona.push_back(cosita);
+    }
+    else{
+        std::cout << "Solo puedes llevar dos objetos al mismo tiempo!..., deja algunos!"<<std::endl;
+    }
 }
 
 void Character::sacaItemR(int pos){
-    obejtosPersona.erase(obejtosPersona.begin()+pos); //Borra el de la posicion pos del vector de cosas
+    if(obejtosPersona.size()>0){
+        obejtosPersona.erase(obejtosPersona.begin()+pos); //Borra el de la posicion pos del vector de cosas
+    }
+    else{
+        std::cout << "No tienes objetos que dejar!"<<std::endl;
+    }
 }
 
 int Character::buscaItemR(std::string cosa){  // Recorre el arreglo de cosas para buscar un objeto /string/. Si existe regresa el index del arreglo, si no un -1
@@ -63,21 +73,40 @@ int Character::buscaItemR(std::string cosa){  // Recorre el arreglo de cosas par
     return -1; //regresa -1 si no encontró ese item
 }
 
-ItemRecogible* Character::getItemR(int num){
-    if (num>=0 && num<obejtosPersona.size()){
-        return obejtosPersona[num];
+int Character::buscaItemRconID(std::string cosa, int id){
+    for(int i=0; i<obejtosPersona.size(); i++){
+        if (obejtosPersona[i]->getDescripcion()==cosa && obejtosPersona[i]->getCuartoFunc()==id){
+            return i;
+        }
     }
-    return nullptr;
-    
+    return -1;
 }
 
-bool Character::buscaItemRconID(std::string cosa, int id){
+bool Character::verificarItemId(std::string cosa, int id){
     for(int i=0; i<obejtosPersona.size(); i++){
         if (obejtosPersona[i]->getDescripcion()==cosa && obejtosPersona[i]->getCuartoFunc()==id){
             return true;
         }
     }
     return false;
+}
+
+bool Character::verificarItem(std::string cosa){
+    for(int i=0; i<obejtosPersona.size(); i++){
+        if (obejtosPersona[i]->getDescripcion()==cosa){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+ItemRecogible* Character::getItemR(int num){ // funciona con el indice de buscarItem
+    if (num>=0 && num<obejtosPersona.size()){
+        return obejtosPersona[num];
+    }
+    return nullptr;
+    
 }
 
 
@@ -88,7 +117,7 @@ bool Character::camina(std::string dir){
         return true;
     }
     else if (voyA!=nullptr && voyA->getTieneLlave()){
-        if (buscaItemRconID("Llave", voyA->getNumLlave())){
+        if (verificarItemId("Llave", voyA->getNumLlave())){
             voyA->setTieneLlave(false); // Quitamos que el cuarto necesite llave una vez abierto por primera vez
             setPosicion(voyA);
             return true;

@@ -23,6 +23,7 @@ class Room {
         void agregaItemR(ItemRecogible*); // ed
         void agregaItemE(ItemEstatico*); // ed
         int buscaItemR(std::string); // ed
+        int buscaItemRconID(std::string, int);
         int buscaItemE(std::string); // ed
         void descripcionLarga();
         bool getTieneLlave();

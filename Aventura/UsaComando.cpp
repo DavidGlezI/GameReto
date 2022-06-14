@@ -26,14 +26,14 @@ void UsaComando::ejecuta(){
                 std::cout<<"----------------"<<std::endl;
             }
             else if(nombre == "alfombra"){
-                ItemRecogible* objeto = actual->getItemR(jugador->buscaItemRconID("Llave", 1));
+                ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave1"));
                 objeto ->setDescubierto(true);
                 std::cout<<"----------------"<<std::endl;
                 usarItem->interactuar();
                 std::cout<<"----------------"<<std::endl;
             }
             else if(nombre == "Lampara"){
-                ItemRecogible* objeto = actual->getItemR(jugador->buscaItemRconID("Llave", 2));
+                ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave2"));
                 objeto ->setDescubierto(true);
                 std::cout<<"----------------"<<std::endl;
                 usarItem->interactuar();

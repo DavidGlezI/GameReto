@@ -14,11 +14,13 @@ class Character {
         void setPosicion(Room*);
         void agregaItemR(ItemRecogible*);
         void sacaItemR(int);
-        ItemRecogible* getItemR(int pos);
+        ItemRecogible* getItemR(int);
         void imprime();
         bool camina(std::string);
         int buscaItemR(std::string);
-        bool buscaItemRconID(std::string, int);
+        int buscaItemRconID(std::string, int); // no se usa, error en quita comando
+        bool verificarItemId(std::string, int);
+        bool verificarItem(std::string);
     private:
         std::string nombre;
         Room* posicion;
