@@ -2,6 +2,7 @@
 #define CHARACTER_H
 #include <iostream>
 #include "Room.h"
+#include <vector>
 
 class Character {
     public:
@@ -12,16 +13,17 @@ class Character {
         Room* getPosicion() const;
         void setPosicion(Room*);
         void agregaItemR(ItemRecogible*);
-        void sacaItenR(ItemRecogible*);
-        ItemRecogible* consultaItemR(int pos) const;
+        void sacaItemR(int);
+        ItemRecogible* getItemR(int pos);
         void imprime();
         bool camina(std::string);
-        bool buscaItemR(std::string);
+        int buscaItemR(std::string);
         bool buscaItemRconID(std::string, int);
     private:
         std::string nombre;
         Room* posicion;
-        ItemRecogible* inventario[2];
+        //ItemRecogible* inventario[2];
+        std::vector<ItemRecogible*> obejtosPersona;
         int numItems;
 };
 

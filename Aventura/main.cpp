@@ -11,10 +11,7 @@ int main(){
 }
 
 
-// agregar comando inventario y objetos visibles
 
-// ver lo de la visibilidad y que no se repita todo
+// checar lo de las condiciones del final
+// Quitar objetos si ya hemos interactuado con ellos 
 
-// checar lo de las condiciones del fina
-
-// agregar lámparas 
