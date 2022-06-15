@@ -7,8 +7,9 @@ Room::Room(){
     }
     tieneLlave= true;
 }
-Room::Room(std::string desc, bool cerrado, int num){
+Room::Room(std::string desc, std::string frase,bool cerrado, int num){
     descripcion=desc;
+    quote = frase;
     for (int i=0; i<4; i++){
         salidas[i]=nullptr;
     }
@@ -41,6 +42,14 @@ void Room::setSalidas(Room* n, Room* s, Room* e, Room* o){
 
 std::string Room::getDescripcion(){
     return descripcion;
+}
+
+std::string Room::getQuote(){
+    return quote;
+}
+
+void Room::setQuote(std::string frase){
+    quote = frase;
 }
 
 ItemRecogible* Room::getItemR(int num){ // Devuelve el item que se encuentra en ese index si existe, si no regresa un null pointer
@@ -115,7 +124,7 @@ void Room::descripcionLarga(){ // Recorre el arreglo del cuarto para ver que obj
         cosas[i]->imprime();
     }
     for (int i=0; i<decoracion.size(); i++){
-        decoracion[i]->imprime();
+        decoracion[i]->imprime(); // polimorfismo
     }
 }
 

@@ -13,13 +13,18 @@ void TomaComando::ejecuta(){
         Room* actual= jugador->getPosicion();
         int num=actual->buscaItemR(cosa); //veo si está en el cuarto (posicion dentro del vector)
         if (num!=-1){
-            ItemRecogible* paraJugador=actual->getItemR(num);
-            jugador->agregaItemR(paraJugador);
-            actual->sacaItemR(num);
-            std::cout<<"----------------"<<std::endl;
-            std::cout << "Ahora tienes en tu poder: "<< std::endl;
-            paraJugador->imprime();
-            std::cout<<"----------------"<<std::endl;
+            if(jugador->cabenItemR()){
+                ItemRecogible* paraJugador=actual->getItemR(num);
+                jugador->agregaItemR(paraJugador);
+                actual->sacaItemR(num);
+                std::cout<<"----------------"<<std::endl;
+                std::cout << "Ahora tienes en tu poder: "<< std::endl;
+                paraJugador->imprime();
+                std::cout<<"----------------"<<std::endl;
+            }
+            else{
+                std::cout<<"Inventario lleno. Solo puedes llevar dos objetos, suelta uno!"<<std::endl;
+            }
         }
         else{
             std::cout<<"----------------"<<std::endl;

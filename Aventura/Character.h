@@ -13,6 +13,7 @@ class Character {
         Room* getPosicion() const;
         void setPosicion(Room*);
         void agregaItemR(ItemRecogible*);
+        bool cabenItemR();
         void sacaItemR(int);
         ItemRecogible* getItemR(int);
         void imprime();

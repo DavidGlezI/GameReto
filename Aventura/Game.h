@@ -18,14 +18,14 @@ class Game {
         void creaElementos();
         void creaComandos();
         void play();
-        bool procesaComando(Comando*);
+        int procesaComando(Comando*);
         void imprimeBienvenida();
     private:
         Parser parser;
         Character* personaje;
         Room *cuarto1, *cuarto2, *cuarto3, *cuarto4;
         ItemRecogible *llave1, *llave2, *carroLlave, *lampUv;
-        ItemEstatico *cajon, *alfombra, *cuadro1, *cuadro2, *cuadro3, *cuadro4, *switchLuz, *ventana, *lampNormal; 
+        ItemEstatico *cajon, *alfombra, *cuadro1, *cuadro2, *cuadro3, *cuadro4, *switchLuz, *ventana, *lampNormal, *candado;
     
 };
 

@@ -9,8 +9,10 @@
 class Room {
     public:
         Room();
-        Room(std::string, bool, int); // descripcion, si tiene o no llave, numero de la llave que abre
+        Room(std::string, std::string ,bool, int); // descripcion, si tiene o no llave, numero de la llave que abre
         std::string getDescripcion();
+        void setQuote(std::string);
+        std::string getQuote();
         int getNumLlave()const;
         void setNumLlave(int);
         Room* getSalida(std::string); // Devuelve la salida del cuarto al que se quiere ir n,s,e,o
@@ -30,6 +32,7 @@ class Room {
         void setTieneLlave(bool);
     private:
         std::string descripcion;
+        std::string quote;
         std::vector<ItemRecogible*> cosas;
         std::vector<ItemEstatico*> decoracion;
         Room* salidas[4];

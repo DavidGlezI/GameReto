@@ -19,25 +19,63 @@ void UsaComando::ejecuta(){
                 usarItem->interactuarSwitch();
             }
             else if(nombre == "cajon"){
-                ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("LamparaUv"));
-                objeto ->setDescubierto(true);
-                std::cout<<"----------------"<<std::endl;
-                usarItem->interactuar();
-                std::cout<<"----------------"<<std::endl;
+                if(actual->getItemR(actual->buscaItemR("LamparaUv")) == nullptr){
+                    std::cout<<"----------------"<<std::endl;
+                    std::cout<<"Ya has abierto este cajon!"<<std::endl;
+                    std::cout<<"----------------"<<std::endl;
+                }
+                else{
+                    ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("LamparaUv")); //nullptr
+                    objeto ->setDescubierto(true);
+                    std::cout<<"----------------"<<std::endl;
+                    usarItem->interactuar();
+                    objeto ->imprime();
+                    std::cout<<"----------------"<<std::endl;
+                }
             }
             else if(nombre == "alfombra"){
-                ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave1"));
-                objeto ->setDescubierto(true);
-                std::cout<<"----------------"<<std::endl;
-                usarItem->interactuar();
-                std::cout<<"----------------"<<std::endl;
+                if(actual->getItemR(actual->buscaItemR("Llave1"))== nullptr){
+                    std::cout<<"----------------"<<std::endl;
+                    std::cout<<"Ya no hay nada debajo del alfombra"<<std::endl;
+                    std::cout<<"----------------"<<std::endl;
+                }
+                else{
+                    ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave1"));
+                    objeto ->setDescubierto(true);
+                    std::cout<<"----------------"<<std::endl;
+                    usarItem->interactuar();
+                    objeto ->imprime();
+                    std::cout<<"----------------"<<std::endl;
+                }
+            }
+            else if(nombre == "switchLuz"){
+                usarItem->interactuarSwitch();
+                if(usarItem->getEncendido()==false && jugador->verificarItem("LamparaUv")){
+                    ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("LlaveCarro"));
+                    objeto ->setDescubierto(true);
+                    std::cout<<"----------------"<<std::endl;
+                    std::cout<<"Puedes ver las huellas con la luz apagada! Mira, las llaves del carro"<<std::endl;
+                    objeto ->imprime();
+                    std::cout<<"----------------"<<std::endl;
+                }
+            }
+            else if(nombre == "Candado"){
+                usarItem->interactuarCandado();
             }
             else if(nombre == "Lampara"){
-                ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave2"));
-                objeto ->setDescubierto(true);
-                std::cout<<"----------------"<<std::endl;
-                usarItem->interactuar();
-                std::cout<<"----------------"<<std::endl;
+                if(actual->getItemR(actual->buscaItemR("Llave2")) == nullptr){
+                    std::cout<<"----------------"<<std::endl;
+                    std::cout<<"Ya usaste la lampara!"<<std::endl;
+                    std::cout<<"----------------"<<std::endl;
+                }
+                else{
+                    ItemRecogible* objeto = actual->getItemR(actual->buscaItemR("Llave2"));
+                    objeto ->setDescubierto(true);
+                    std::cout<<"----------------"<<std::endl;
+                    usarItem->interactuar();
+                    objeto ->imprime();
+                    std::cout<<"----------------"<<std::endl;
+                }        
             }
             else{
                 std::cout<<"----------------"<<std::endl;

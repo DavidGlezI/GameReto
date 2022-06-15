@@ -47,11 +47,16 @@ void Character::sacaItemR(ItemRecogible* item){
 }
 */
 void Character::agregaItemR(ItemRecogible* cosita){ // Agrega un item al final del arreglo
-    if(obejtosPersona.size()<2){
         obejtosPersona.push_back(cosita);
     }
+
+
+bool Character::cabenItemR(){
+    if(obejtosPersona.size()<2){
+        return true;
+    }
     else{
-        std::cout << "Solo puedes llevar dos objetos al mismo tiempo!..., deja algunos!"<<std::endl;
+        return false;
     }
 }
 
@@ -73,18 +78,18 @@ int Character::buscaItemR(std::string cosa){  // Recorre el arreglo de cosas par
     return -1; //regresa -1 si no encontró ese item
 }
 
-int Character::buscaItemRconID(std::string cosa, int id){
+int Character::buscaItemRconID(std::string tipo, int id){ // usamos esta solo para las llaves
     for(int i=0; i<obejtosPersona.size(); i++){
-        if (obejtosPersona[i]->getDescripcion()==cosa && obejtosPersona[i]->getCuartoFunc()==id){
+        if (obejtosPersona[i]->getTipo()==tipo && obejtosPersona[i]->getCuartoFunc()==id){
             return i;
         }
     }
     return -1;
 }
 
-bool Character::verificarItemId(std::string cosa, int id){
+bool Character::verificarItemId(std::string tipo, int id){ // usamos esta solo para las llaves
     for(int i=0; i<obejtosPersona.size(); i++){
-        if (obejtosPersona[i]->getDescripcion()==cosa && obejtosPersona[i]->getCuartoFunc()==id){
+        if (obejtosPersona[i]->getTipo()==tipo && obejtosPersona[i]->getCuartoFunc()==id){
             return true;
         }
     }
@@ -125,6 +130,11 @@ bool Character::camina(std::string dir){
     }
     return false;
 }
+
+/*
+
+*/
+
 
 void Character::imprime(){
     std::cout << "Soy " << nombre <<std::endl;

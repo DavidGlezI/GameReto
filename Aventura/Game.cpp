@@ -19,23 +19,24 @@ void Game::creaComandos(){
 y los configura (cuartos sus salidas y que objetos hay en cada room)*/
 void Game::creaElementos(){
     personaje=new Character("Morbius");
-    cuarto1=new Room("Primer habitacion!", false,0);
-    cuarto2=new Room("Este cuarto esta oscuro! Nunca encontraremos la llave!", true, 1);
-    cuarto3=new Room("Tercer cuarto! No encuentro la llave pero la cerradura se parece a la del primer cuarto!", true, 2);
-    cuarto4=new Room("Sera el ultimo cuarto?", true, 1);
-    cajon=new ItemEstatico("cajon", "Encontraste algo dentro!", true, false);
-    alfombra=new ItemEstatico("alfombra", "Encontraste algo debajo!", true, false);
-    cuadro1=new ItemEstatico("cuadro1", "1923 5", true, false);
-    cuadro2=new ItemEstatico("cuadro2", "1954 3", true, false);
-    cuadro3=new ItemEstatico("cuadro3", "1973 7", true, false);
-    cuadro4=new ItemEstatico("cuadro4", "1994 8", true, false);
-    lampUv = new ItemRecogible("LamparaUv", "Luz ultravioleta",3,false);
-    lampNormal = new ItemEstatico("Lampara", "Haz encontrado una nueva Llave!",true,false);
-    switchLuz = new ItemEstatico("switchluz", "Puede haber algo dentro", true, true);
-    ventana = new ItemEstatico("ventana", "Mira! un carro, es nuestra oportunidad de escapar. Me pregunto donde estaran las llaves", true, false);
-    llave1 = new ItemRecogible("Llave1", "La primera llave!", 1, false);
-    llave2 = new ItemRecogible("Llave2", "Otra llave!", 2, false);
-    carroLlave = new ItemRecogible("Llave carro", "Por fin! Salgamos de aqui", 0, false);
+    cuarto1=new Room("Primer habitacion!", "He despertado aqui!",false,0);
+    cuarto2=new Room("Segundo cuarto!","Hay poca luz!", true, 1);
+    cuarto3=new Room("Tercer cuarto!", "La cerradura se parece a la del primer cuarto!", true, 2);
+    cuarto4=new Room("Ultimo cuarto!","Necesitamos escapar!", true, 1);
+    cajon=new ItemEstatico("cajon", "Encontraste algo dentro!", true, false,0);
+    alfombra=new ItemEstatico("alfombra", "Encontraste algo debajo!", true, false,0);
+    cuadro1=new ItemEstatico("cuadro1", "1923 5", true, false,0);
+    cuadro2=new ItemEstatico("cuadro2", "1954 3", true, false,0);
+    cuadro3=new ItemEstatico("cuadro3", "1973 7", true, false,0);
+    cuadro4=new ItemEstatico("cuadro4", "1994 8", true, false,0);
+    lampUv = new ItemRecogible("LamparaUv","Luz ultravioleta","Lamp",3,false);
+    lampNormal = new ItemEstatico("Lampara","Haz encontrado una nueva Llave!",true,false,0);
+    switchLuz = new ItemEstatico("switchLuz", "Puede haber algo dentro", true, true,0);
+    ventana = new ItemEstatico("ventana", "Mira! un carro, es nuestra oportunidad de escapar. Me pregunto donde estaran las llaves", true, false,0);
+    llave1 = new ItemRecogible("Llave1", "La primera llave!","Llave", 1, false);
+    llave2 = new ItemRecogible("Llave2", "Llave del cuarto dos!","Llave", 2, false);
+    carroLlave = new ItemRecogible("LlaveCarro","Llave del Carro", "Por fin! Salgamos de aqui", 4, false);
+    candado = new ItemEstatico("Candado", "Una combinacion de 4 numeros! Los necesito para sobrevivir!", true, false,1);
     personaje->setPosicion(cuarto1);
     cuarto1->agregaItemE(cajon);    
     cuarto1->agregaItemE(alfombra);
@@ -49,7 +50,7 @@ void Game::creaElementos(){
     cuarto2->agregaItemR(llave2);
     cuarto1->agregaItemR(lampUv);
     cuarto2->agregaItemE(lampNormal);
-
+    cuarto4->agregaItemE(candado);
 
 
     cuarto1->setSalidas(nullptr, cuarto2, cuarto4, nullptr);
@@ -67,31 +68,35 @@ void Game::imprimeBienvenida(){
  void Game::play()
     {
         imprimeBienvenida();
-        bool finished = false;
-        while (!finished) {
+        int finished = 0;
+        while (finished==0) {
             Comando* comando = parser.generaComando();
             finished = procesaComando(comando);
         }
-        
-        std::cout << "Gracias por jugar este juego de aventura" << std::endl;
+        if(finished==2){
+            std::cout<<"Ya no tienes tiempo! Acaba de volver a la casa."<<std::endl;
+            std::cout << "Lo lamento, no escapaste! Gracias por jugar este juego de aventura" << std::endl;
+
+        }
+        else if(finished==1){
+            std::cout<<"Enciendes el carro y manejas lo mas lejos posible."<<std::endl;
+            std::cout << "Felicidades! Lograste escapar con vida! Gracias por jugar este juego de aventura" << std::endl;
+        }
+
     }
-
-    bool Game::procesaComando(Comando* instr){
-        bool salio = false;
+    int Game::procesaComando(Comando* instr){
+        int salio = 0;
         instr->ejecuta(); // se esta ejecutando polimorfismo
-
-        // Si el personaje esta en el C3, que se abra la otra puerta, agregar maybe?
-        // Editar lo de abajo para que tenga el codigo y llaves del carro y salga
-        // Checar lo de llaves para cada cuarto  token
-        // Checar comando de puerta con llave para hacer funcion del codigo 
-           
         if(personaje->getPosicion()==cuarto4){
-            if(personaje->buscaItemR("Llave carro")){
-                salio = true;
+            if(candado->getVez()>2){
+                salio = 2;
+            }
+            else if(personaje->verificarItem("LlaveCarro") && candado->getEncendido()){
+                salio = 1;
             }
             else{
                 personaje->setPosicion(cuarto4);
             }
         }
-     return salio;
+    return salio;
     }

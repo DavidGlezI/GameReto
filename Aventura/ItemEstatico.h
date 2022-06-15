@@ -7,7 +7,7 @@
 class ItemEstatico:public Item{
     public:
         ItemEstatico();
-        ItemEstatico(std::string, std::string, bool, bool);
+        ItemEstatico(std::string, std::string, bool, bool,int);
         void interactuar();
         void interactuarSwitch();
         bool getPrimerUso() const;
@@ -15,12 +15,16 @@ class ItemEstatico:public Item{
         bool getEncendido();
         void setEncendido(bool);
         void setFrase(std::string);
+        int getVez();
+        void incrementaVez(); // para el candado, dos oportunidades
+        void interactuarCandado();
         std::string getFrase();
         void imprime();
     private:
         bool primerUso;
         std::string frase;
         bool encendido;
+        int vez;
 };
 
 
