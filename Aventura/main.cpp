@@ -12,11 +12,5 @@ int main(){
 
 
 
-// checar lo de las condiciones del final
-// Quitar objetos si ya hemos interactuado con ellos 
 
-// Agregar diferenciadores entre acciones -----
-
-// agregar que hacer con cada objeto, usar, tomar etc..
-
-// revisar ID 
+// Agregar sobrecarga de operador en [ ] para inventario o en cout de un objeto para describirlo

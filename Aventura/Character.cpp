@@ -4,12 +4,14 @@ Character::Character(){
     posicion=nullptr;
     nombre="Personaje";
     numItems=0;
+    abandonar = false;
 }
 
-Character::Character(std::string name){
+Character::Character(std::string name, bool out){
     posicion=nullptr;
     nombre=name;
     numItems=0;
+    abandonar = out;
 }
 
 std::string Character::getNombre() const{
@@ -47,12 +49,12 @@ void Character::sacaItemR(ItemRecogible* item){
 }
 */
 void Character::agregaItemR(ItemRecogible* cosita){ // Agrega un item al final del arreglo
-        obejtosPersona.push_back(cosita);
+        objetosPersona.push_back(cosita);
     }
 
 
 bool Character::cabenItemR(){
-    if(obejtosPersona.size()<2){
+    if(objetosPersona.size()<2){
         return true;
     }
     else{
@@ -61,8 +63,8 @@ bool Character::cabenItemR(){
 }
 
 void Character::sacaItemR(int pos){
-    if(obejtosPersona.size()>0){
-        obejtosPersona.erase(obejtosPersona.begin()+pos); //Borra el de la posicion pos del vector de cosas
+    if(objetosPersona.size()>0){
+        objetosPersona.erase(objetosPersona.begin()+pos); //Borra el de la posicion pos del vector de cosas
     }
     else{
         std::cout << "No tienes objetos que dejar!"<<std::endl;
@@ -70,8 +72,8 @@ void Character::sacaItemR(int pos){
 }
 
 int Character::buscaItemR(std::string cosa){  // Recorre el arreglo de cosas para buscar un objeto /string/. Si existe regresa el index del arreglo, si no un -1
-    for(int i=0; i<obejtosPersona.size();i++){
-        if(obejtosPersona[i]->getDescripcion()==cosa){
+    for(int i=0; i<objetosPersona.size();i++){
+        if(objetosPersona[i]->getDescripcion()==cosa){
             return i; //devuelve la posición donde está ese objeto
         }
     }
@@ -79,8 +81,8 @@ int Character::buscaItemR(std::string cosa){  // Recorre el arreglo de cosas par
 }
 
 int Character::buscaItemRconID(std::string tipo, int id){ // usamos esta solo para las llaves
-    for(int i=0; i<obejtosPersona.size(); i++){
-        if (obejtosPersona[i]->getTipo()==tipo && obejtosPersona[i]->getCuartoFunc()==id){
+    for(int i=0; i<objetosPersona.size(); i++){
+        if (objetosPersona[i]->getTipo()==tipo && objetosPersona[i]->getCuartoFunc()==id){
             return i;
         }
     }
@@ -88,8 +90,8 @@ int Character::buscaItemRconID(std::string tipo, int id){ // usamos esta solo pa
 }
 
 bool Character::verificarItemId(std::string tipo, int id){ // usamos esta solo para las llaves
-    for(int i=0; i<obejtosPersona.size(); i++){
-        if (obejtosPersona[i]->getTipo()==tipo && obejtosPersona[i]->getCuartoFunc()==id){
+    for(int i=0; i<objetosPersona.size(); i++){
+        if (objetosPersona[i]->getTipo()==tipo && objetosPersona[i]->getCuartoFunc()==id){
             return true;
         }
     }
@@ -97,8 +99,8 @@ bool Character::verificarItemId(std::string tipo, int id){ // usamos esta solo p
 }
 
 bool Character::verificarItem(std::string cosa){
-    for(int i=0; i<obejtosPersona.size(); i++){
-        if (obejtosPersona[i]->getDescripcion()==cosa){
+    for(int i=0; i<objetosPersona.size(); i++){
+        if (objetosPersona[i]->getDescripcion()==cosa){
             return true;
         }
     }
@@ -107,8 +109,8 @@ bool Character::verificarItem(std::string cosa){
 
 
 ItemRecogible* Character::getItemR(int num){ // funciona con el indice de buscarItem
-    if (num>=0 && num<obejtosPersona.size()){
-        return obejtosPersona[num];
+    if (num>=0 && num<objetosPersona.size()){
+        return objetosPersona[num];
     }
     return nullptr;
     
@@ -131,15 +133,19 @@ bool Character::camina(std::string dir){
     return false;
 }
 
-/*
+bool Character::getAbandonar(){
+    return abandonar;
+}
 
-*/
+void Character::setAbandonar(bool out){
+    abandonar = out;
+}
 
 
 void Character::imprime(){
     std::cout << "Soy " << nombre <<std::endl;
-    std::cout << "y llevo  "<< obejtosPersona.size() << " objeto(s): " << std::endl;
-    for(int i=0; i<obejtosPersona.size(); i++){
-        obejtosPersona[i]->imprime();
+    std::cout << "y llevo  "<< objetosPersona.size() << " objeto(s): " << std::endl;
+    for(int i=0; i<objetosPersona.size(); i++){
+        objetosPersona[i]->imprime();
     }
 }

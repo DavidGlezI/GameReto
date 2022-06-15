@@ -16,6 +16,7 @@ class ItemRecogible:public Item{
         int getCuartoFunc() const;
         bool getDescubierto() const;
         void setDescubierto(bool);
+        friend std::ostream& operator <<(std::ostream&, ItemRecogible*);
         void imprime();
     private:
         std::string descEspecializada;

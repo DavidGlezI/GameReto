@@ -7,7 +7,7 @@
 class Character {
     public:
         Character();
-        Character(std::string);
+        Character(std::string, bool);
         std::string getNombre() const;
         void setNombre(std::string);
         Room* getPosicion() const;
@@ -22,12 +22,15 @@ class Character {
         int buscaItemRconID(std::string, int); // no se usa, error en quita comando
         bool verificarItemId(std::string, int);
         bool verificarItem(std::string);
+        bool getAbandonar();
+        void setAbandonar(bool);
     private:
         std::string nombre;
         Room* posicion;
         //ItemRecogible* inventario[2];
-        std::vector<ItemRecogible*> obejtosPersona;
+        std::vector<ItemRecogible*> objetosPersona;
         int numItems;
+        bool abandonar;
 };
 
 

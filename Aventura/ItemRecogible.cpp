@@ -47,6 +47,12 @@ int ItemRecogible::getCuartoFunc() const{
     return cuartoFunc;
 }
 
+std::ostream& operator << (std::ostream & salida, ItemRecogible* miItemR){
+    salida << "Objeto: "<<miItemR->Item::getDescripcion()<<" Descripcion: "<<miItemR->descEspecializada;
+
+    return salida;
+}
+
 void ItemRecogible::imprime(){
     if(descubierto){
         if(Item::getDescripcion()=="LamparaUv"){

@@ -9,6 +9,7 @@
 #include "UsaComando.h"
 #include "MuestraComando.h"
 #include "QuitaComando.h"
+#include "SalirComando.h"
 #include "Parser.h"
 
 

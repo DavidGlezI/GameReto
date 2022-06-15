@@ -19,7 +19,8 @@ void QuitaComando::ejecuta(){
             jugador->sacaItemR(num);
             std::cout<<"----------------"<<std::endl;
             std::cout << "Haz soltado: "<< std::endl;
-            deJugador->imprime();
+            //deJugador->imprime();
+            std::cout<<deJugador<<std::endl; // Sobrecarga de operadores
             std::cout<<"----------------"<<std::endl;
         }
         else{

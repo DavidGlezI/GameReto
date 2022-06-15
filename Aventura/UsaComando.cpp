@@ -112,9 +112,11 @@ void UsaComando::ejecuta(){
             }
         }
         else{
+            std::cout<<"----------------"<<std::endl;
             std::cout<< "Ese objeto no se encuentra en esta habitacion..."<<std::endl;
             std::cout << "Recuerda tu estas aqui: " << std::endl;
             actual->descripcionLarga();
+            std::cout<<"----------------"<<std::endl;
         }
     }
 }
