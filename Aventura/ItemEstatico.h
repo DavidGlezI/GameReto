@@ -17,9 +17,9 @@ class ItemEstatico:public Item{
         void setFrase(std::string);
         int getVez();
         void incrementaVez(); // para el candado, dos oportunidades
-        void interactuarCandado();
         std::string getFrase();
         void imprime();
+        bool interactuarCandado();
     private:
         bool primerUso;
         std::string frase;

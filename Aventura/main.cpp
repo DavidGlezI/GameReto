@@ -13,6 +13,10 @@ int main(){
 
 
 // checar lo de las condiciones del final
-// usa obj no identificado , agregar ---- tmb desplazar
+// Quitar objetos si ya hemos interactuado con ellos 
 
-// Modificar menu
+// Agregar diferenciadores entre acciones -----
+
+// agregar que hacer con cada objeto, usar, tomar etc..
+
+// revisar ID 

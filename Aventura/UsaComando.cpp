@@ -60,7 +60,35 @@ void UsaComando::ejecuta(){
                 }
             }
             else if(nombre == "Candado"){
-                usarItem->interactuarCandado();
+                if(jugador->verificarItem("LlaveCarro")){
+                    bool lock;
+                    lock =usarItem->interactuarCandado();
+                    if(lock==true){
+                        usarItem->setEncendido(true);
+                    }
+                    else{
+                        usarItem->incrementaVez();
+                    }
+                }
+                else{
+                    std::cout<<"No tienes la llave del carro! Pista: Usa la lampara ultravioleta con la luz apagada!"<<std::endl;
+                }
+                /*
+                int combinacion;
+                std::cout<<"----------------"<<std::endl;
+                std::cout<<"Intento numero: "<<usarItem->getVez()<<std::endl;
+                std::cout<<"Solo tienes dos intentos. Ingresa la combinacion del candado: "<<std::endl;
+                std::cout<<"----------------"<<std::endl;
+                std::cin>>combinacion;
+                if(combinacion != 1890){
+                    std::cout<<"No es esa!"<<std::endl;
+                    usarItem->incrementaVez(); // si llega a 3 se acaba el juego y no logras escapar
+                }
+                else{
+                    std::cout<<"Se abrio!"<<std::endl;
+                    usarItem->setEncendido(true);
+                }
+                */
             }
             else if(nombre == "Lampara"){
                 if(actual->getItemR(actual->buscaItemR("Llave2")) == nullptr){

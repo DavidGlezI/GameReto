@@ -88,14 +88,16 @@ void Game::imprimeBienvenida(){
         int salio = 0;
         instr->ejecuta(); // se esta ejecutando polimorfismo
         if(personaje->getPosicion()==cuarto4){
-            if(candado->getVez()>2){
+            if(candado->getVez()>1){
                 salio = 2;
             }
             else if(personaje->verificarItem("LlaveCarro") && candado->getEncendido()){
                 salio = 1;
             }
-            else{
-                personaje->setPosicion(cuarto4);
+            else if(personaje->verificarItem("LlaveCarro") && candado->getEncendido()==false){
+                std::cout<<"----------------"<<std::endl;
+                std::cout<<"Solo falta abrir el candado!"<<std::endl;
+                std::cout<<"----------------"<<std::endl;
             }
         }
     return salio;

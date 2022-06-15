@@ -39,23 +39,26 @@ void ItemEstatico::interactuarSwitch(){
 
 }
 
-void ItemEstatico::interactuarCandado(){
+bool ItemEstatico::interactuarCandado(){
     int combinacion;
+    bool abierto = false;
     std::cout<<"----------------"<<std::endl;
-    std::cout<<"Intento numero: "<<getVez()<<std::endl;
-    std::cout<<"Solo tienes dos intentos. Ingresa la combinacion del candado: "<<std::endl;
+    std::cout<<"Solo tienes 1 intento. Ingresa la combinacion del candado: "<<std::endl;
     std::cout<<"----------------"<<std::endl;
     std::cin>>combinacion;
     if(combinacion != 1890){
         std::cout<<"No es esa!"<<std::endl;
-        incrementaVez(); // si llega a 3 se acaba el juego y no logras escapar
+        abierto = false;
+
     }
     else{
         std::cout<<"Se abrio!"<<std::endl;
-        setEncendido(true);
+        abierto = true;
     }
+    return abierto;
 
 }
+
 
 bool ItemEstatico::getEncendido(){
     return encendido;
@@ -92,6 +95,10 @@ void ItemEstatico::imprime(){
         else{
             std::cout<<"Luz apagada"<<std::endl;
         }
+    }
+    else if(Item::getDescripcion()=="Candado"){
+        std::cout<<"Combinacion de 4 numeros! Solo podemos intentarlo una vez!" <<std::endl;
+        std::cout<<"Asegurate de tener las llaves del carro antes de usar el candado!"<<std::endl;
     }
     else{
         if(primerUso){
