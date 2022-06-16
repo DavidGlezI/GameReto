@@ -1,5 +1,7 @@
 #include "MuestraComando.h"
 
+// Esta clase fue hecha por David González y Fernando García
+
 MuestraComando::MuestraComando(Character* personaje):Comando("Muestra", ""){
     jugador = personaje;
 }

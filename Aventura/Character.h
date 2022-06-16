@@ -4,6 +4,7 @@
 #include "Room.h"
 #include <vector>
 
+// Esta clase fue hecha por David González
 class Character {
     public:
         Character();

@@ -2,7 +2,7 @@
 #define ITEM_H
 #include <string>
 #include <iostream>
-
+// Esta clase fue hecha por David González
 
 class Item {
     public:

@@ -1,5 +1,7 @@
 #include "Game.h"
 
+
+// Esta clase fue hecha por David González y Fernando García
 Game::Game(){
     creaElementos();
     creaComandos();

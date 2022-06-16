@@ -5,7 +5,7 @@
 #include <vector>
 #include "ItemRecogible.h"
 #include "ItemEstatico.h"
-
+// Esta clase fue hecha por David González
 class Room {
     public:
         Room();

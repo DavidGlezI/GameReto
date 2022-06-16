@@ -1,5 +1,7 @@
 #include "SalirComando.h"
 
+// Esta clase fue hecha por David González y Fernando García
+
 SalirComando::SalirComando(Character* personaje):Comando("Salir", ""){
     jugador = personaje;
 }

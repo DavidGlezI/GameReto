@@ -1,5 +1,7 @@
 #include "QuitaComando.h"
 
+// Esta clase fue hecha por David González
+
 QuitaComando::QuitaComando(Character* personaje):Comando("Quita", ""){
     jugador=personaje;
 }
@@ -27,7 +29,8 @@ void QuitaComando::ejecuta(){
             std::cout<<"----------------"<<std::endl;
             std::cout<< "Ese objeto no se encuentra en tu inventario..."<<std::endl;
             std::cout << "Recuerda que tienes: " << std::endl;
-            jugador->imprime(); // cambiar esto
+            //jugador->imprime(); // cambiar esto
+            std::cout<<deJugador<<std::endl; // Sobrecarga de operadores
             std::cout<<"----------------"<<std::endl;
         }
     }

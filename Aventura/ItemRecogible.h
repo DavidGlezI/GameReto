@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Item.h"
 
+// Esta clase fue hecha por David González
+
 class ItemRecogible:public Item{
     public:
         ItemRecogible();

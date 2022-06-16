@@ -1,5 +1,8 @@
 #include "UsaComando.h"
 
+// Esta clase fue hecha por David González y Fernando García
+
+
 UsaComando::UsaComando(Character* personaje):Comando("Usa", ""){
     jugador = personaje;
 }
@@ -15,10 +18,7 @@ void UsaComando::ejecuta(){
         if (num!=-1){ // Si no es -1 entonces si esta en la habitacion
             ItemEstatico* usarItem=actual->getItemE(num); // Da el item que se buscaba
             std::string nombre = usarItem->getDescripcion(); // Pasa el nombre del item que se buscaba
-            if(nombre == "switchluz"){
-                usarItem->interactuarSwitch();
-            }
-            else if(nombre == "cajon"){
+            if(nombre == "cajon"){
                 if(actual->getItemR(actual->buscaItemR("LamparaUv")) == nullptr){
                     std::cout<<"----------------"<<std::endl;
                     std::cout<<"Ya has abierto este cajon!"<<std::endl;

@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Item.h"
-
+// Esta clase fue hecha por David González y Fernando García
 class ItemEstatico:public Item{
     public:
         ItemEstatico();

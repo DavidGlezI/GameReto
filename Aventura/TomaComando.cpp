@@ -1,5 +1,7 @@
 #include "TomaComando.h"
 
+// Esta clase fue hecha por David González y Fernando García
+
 TomaComando::TomaComando(Character* personaje):Comando("Toma", ""){
     jugador=personaje;
 }
@@ -19,7 +21,7 @@ void TomaComando::ejecuta(){
                 actual->sacaItemR(num);
                 std::cout<<"----------------"<<std::endl;
                 std::cout << "Ahora tienes en tu poder: "<< std::endl;
-                paraJugador->imprime();
+                std::cout<<paraJugador<<std::endl; // Sobrecarga de operadores
                 std::cout<<"----------------"<<std::endl;
             }
             else{
