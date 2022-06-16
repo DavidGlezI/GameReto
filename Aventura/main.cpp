@@ -12,5 +12,3 @@ int main(){
 
 
 
-
-// Agregar sobrecarga de operador en [ ] para inventario o en cout de un objeto para describirlo

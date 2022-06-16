@@ -40,6 +40,7 @@ void Game::creaElementos(){
     llave2 = new ItemRecogible("Llave2", "Llave del cuarto dos!","Llave", 2, false);
     carroLlave = new ItemRecogible("LlaveCarro","Llave del Carro", "Por fin! Salgamos de aqui", 4, false);
     candado = new ItemEstatico("Candado", "Una combinacion de 4 numeros! Los necesito para sobrevivir!", true, false,1);
+    ventana=new ItemEstatico("ventana", "Mira un carro afuera! Necesitamos encontrar las llaves.", true, false,0);
     personaje->setPosicion(cuarto1);
     cuarto1->agregaItemE(cajon);    
     cuarto1->agregaItemE(alfombra);
@@ -54,6 +55,7 @@ void Game::creaElementos(){
     cuarto1->agregaItemR(lampUv);
     cuarto2->agregaItemE(lampNormal);
     cuarto4->agregaItemE(candado);
+    cuarto4->agregaItemE(ventana);
 
 
     cuarto1->setSalidas(nullptr, cuarto2, cuarto4, nullptr);

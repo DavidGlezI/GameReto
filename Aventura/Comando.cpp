@@ -22,9 +22,6 @@ void Comando::setSegPalabra(std::string seg){
     segPalabra=seg;
 }
 
-bool Comando::desconocido(){
-    return comando=="";
-}
 
 bool Comando::tieneSegPalabra(){
     return segPalabra!="";
